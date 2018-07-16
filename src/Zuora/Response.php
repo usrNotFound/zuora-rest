@@ -2,6 +2,8 @@
 
 namespace Zuora;
 
+use \Zuora\Http\Response as ZuoraResponse;
+use Zuora\Object\ZuoraObject;
 
 class Response
 {
@@ -11,7 +13,7 @@ class Response
     protected $response;
 
     /**
-     * @var \Zuora\Client
+     * @var Client
      */
     protected $client;
 
@@ -22,10 +24,10 @@ class Response
      * @param \Zuora\Http\Response $response
      *   HTTP response object
      *
-     * @param \Zuora\Client $client
+     * @param Client $client
      *   Initialized client class
      */
-    function __construct(\Zuora\Http\Response $response, \Zuora\Client $client)
+    function __construct(ZuoraResponse $response, Client $client)
     {
         $this->response = $response;
         $this->client = $client;
@@ -56,7 +58,7 @@ class Response
     public function map($entity, $classname)
     {
         $data = $this->response->getData();
-        $object = new \Zuora\Object\Object($data);
+        $object = new ZuoraObject($data);
         return $object->map($entity, $classname);
     }
 

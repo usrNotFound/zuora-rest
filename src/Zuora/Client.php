@@ -2,6 +2,8 @@
 
 namespace Zuora;
 
+use PHPUnit_Framework_Error_Notice;
+use PHPUnit_Framework_Error_Warning;
 use Zuora\Exception\Exception;
 use Zuora\Http\RequestInterface;
 
@@ -273,7 +275,7 @@ class Client
      * @param string $file
      *   Path to file
      *
-     * return \Zuora\Object\ImportStatus
+     * return \Zuora\ZuoraObject\ImportStatus
      */
     public function uploadUsage($file)
     {
